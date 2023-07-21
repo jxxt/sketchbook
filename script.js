@@ -6,9 +6,6 @@ const draw_area = document.querySelector('.draw-area')
 draw_area.style.width = draw_width + "px"
 draw_area.style.height = draw_height + "px"
 
-
-
-
 const slider = document.querySelector(".slider")
 
 const sliderValueElement = document.querySelector(".value")
@@ -21,7 +18,7 @@ sliderValueElement.textContent = sliderValue + " X " + sliderValue;
 
 function updateSliderValue() {
     draw_area.replaceChildren();
-    
+
     sliderValue = slider.value;
     sliderValueElement.textContent = sliderValue + " X " + sliderValue;
 
@@ -39,9 +36,15 @@ function updateSliderValue() {
         box.style.height = box_width + "px"
     }
 
-    const box = document.querySelector(".grid-box")
+    const boxx = draw_area.querySelectorAll("*");
 
+    function handleClick(event) {
+        event.target.style.backgroundColor = "lavender"
+    }
 
+    boxx.forEach((element) => {
+        element.addEventListener("mouseover", handleClick);
+    });
 }
 
 slider.addEventListener("change", updateSliderValue);
